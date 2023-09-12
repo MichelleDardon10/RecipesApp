@@ -14,9 +14,6 @@ def show_feed():
 
 if __name__ == '__main__':
     app.run()
-<<<<<<< Updated upstream
-=======
 
 
     
->>>>>>> Stashed changes

@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 
 api_bp = Blueprint('api', __name__)
 
-# Ejemplo de una lista de recetas (puede reemplazarse con una base de datos real)
 recipes = [
     {
         'id': 1,
@@ -16,7 +15,8 @@ recipes = [
         'difficulty': 'Fácil',
         'comments': ['Deliciosa!', 'Fácil de hacer'],
         'ingredients': ['Tomates maduros', 'mozzarella fresca', 'hojas de albahaca', 'aceite de oliva', 'vinagre balsámico', 'sal', 'pimienta'],
-        'image_path': '/static/images/ensalada_caprese.jpg'
+        'image_path': '/static/images/ensalada_caprese.jpg',
+        'creator': 'Nosotros'
     },
     {
         'id': 2,
@@ -28,8 +28,9 @@ recipes = [
         'rating': 4.0,
         'difficulty': 'Fácil',
         'comments': ['Muy buena'],
-        'ingredients': ['Pan integral', 'aguacate maduro', 'sal', 'pimienta', 'chiles rojos secos (opcional)'],
-        'image_path': '/static/images/tostadas_con_aguacate.jpg'
+        'ingredients': ['Pan integral', 'sal', 'aguacate maduro', 'pimienta', 'chiles rojos secos (opcional)'],
+        'image_path': '/static/images/tostadas_con_aguacate.jpg',
+        'creator': 'Nosotros'
     },
 ]
 
@@ -48,6 +49,21 @@ def add_recipe():
         'difficulty': data.get('difficulty', 'Desconocida'),
         'comments': [],
         'ingredients': data.get('ingredients', []),
+        'creator':data.get('name', 'Username'),
     }
     recipes.append(new_recipe)
     return jsonify({'message': 'Receta agregada exitosamente'})
+
+@api_bp.route('/recipes/search', methods=['GET'])
+def search_recipes():
+    search_query = request.args.get('query', '').lower()
+    
+    # Filtra las recetas que coinciden con la consulta
+    matching_recipes = [recipe for recipe in recipes if
+                        search_query in recipe['name'].lower() or
+                        search_query in recipe['creator'].lower() or
+                        any(search_query in ingredient.lower() for ingredient in recipe['ingredients'])]
+    
+    return jsonify(matching_recipes)
+
+

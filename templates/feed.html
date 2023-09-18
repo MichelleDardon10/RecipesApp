@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Resto del código del encabezado... -->
+    <!-- Otros elementos del encabezado... -->
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/search.css') }}"></script>
 </head>
 <body>
+    <div class="container">
+        <!-- Agrega la barra de búsqueda -->
+        <div class="input-group mb-3 mt-3">
+            <input type="text" id="search-input" class="form-control" placeholder="Search recipes...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" onclick="searchRecipes()">Buscar</button>
+            </div>
+        </div>    
     <div class="container">
         <h1 class="mt-5">Feed de Recetas</h1>
         <div id="recipeCarousel" class="carousel slide" data-ride="carousel">
@@ -51,5 +61,7 @@
     </div>
 
     <!-- Agrega enlaces a las bibliotecas de Bootstrap y JavaScript necesarias... -->
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+
 </body>
 </html>

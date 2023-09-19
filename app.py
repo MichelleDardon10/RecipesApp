@@ -5,21 +5,19 @@ from API.routes import api_bp, recipes
 app = Flask(__name__)
 app.register_blueprint(api_bp, url_prefix='/api')  # Registra el Blueprint del API
 
-
 @app.route('/', methods=['GET'])
 def show_feed():
-    
     return render_template('feed.html', recipes=recipes)
 
 @app.route('/buscar', methods=['GET'])
 def search_recipe():
-    query = request.args.get('query', '')  #consulta del formulario de búsqueda
+    query = request.args.get('query', '')  # Consulta del formulario de búsqueda
     results = []
-    for recepe in recipes:
-        if query.lower() in recepe['name'].lower() or \
-           query.lower() in recepe['creator'].lower() or \
-           any(query.lower() in ingredients.lower() for ingredients in recepe['ingredients']):
-            results.append(recepe)
+    for recipe in recipes:
+        if query.lower() in recipe['name'].lower() or \
+           query.lower() in recipe['creator'].lower() or \
+           any(query.lower() in ingredient.lower() for ingredient in recipe['ingredients']):
+            results.append(recipe)
 
     return render_template('results.html', results=results, query=query)
 
@@ -33,8 +31,6 @@ def show_results():
     
     return render_template('results.html', query=search_query, resultados=matching_recipes)
 
-    
-    return render_template('results.html', query=search_query, resultados=matching_recipes)
 
 if __name__ == '__main__':
     app.run()

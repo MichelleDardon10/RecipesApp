@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Resto del código del encabezado... -->
-    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
-    <script src="{{ url_for('static', filename='css/search.css') }}"></script>
+    <!-- Otros elementos del encabezado... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
 </head>
 <body>
     <div class="container">
         <!-- Agrega la barra de búsqueda -->
-        <div class="input-group mb-3 mt-3">
+        <div class="search-container"> <!-- Agrega la clase "search-container" para centrar -->
             <input type="text" id="search-input" class="form-control" placeholder="Search recipes...">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" onclick="searchRecipes()">Buscar</button>
-            </div>
-        </div>    
+        </div>
     </div>
+
     <!-- Muestra solo la imagen y el nombre de las recetas coincidentes -->
-    <div class="row">
-        {% for receta in resultados %}
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <img src="{{ receta.image_path }}" class="card-img-top" alt="{{ receta.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ receta.name }}</h5>
+    <!-- Muestra solo la imagen y el nombre de las recetas coincidentes -->
+    <div class="container mt-4">
+        <div class="row">
+            {% for receta in resultados %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="{{ receta.image_path }}" class="card-img-top" alt="{{ receta.name }}">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ receta.name }}</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
 
-<!-- Otros elementos y scripts... -->
+
+    <!-- bibliotecas de Bootstrap y JavaScript necesarias... -->
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
 </body>
 </html>

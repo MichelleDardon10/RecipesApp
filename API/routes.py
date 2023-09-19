@@ -66,4 +66,3 @@ def search_recipes():
     
     return jsonify(matching_recipes)
 
-

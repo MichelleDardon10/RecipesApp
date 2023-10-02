@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Pollo a la parrilla",
+        "post_by": "Chef Juan",
+        "valoration": 4.5,
+        "image": "imagen_url_1",
+        "ingredients": [
+            "pollo",
+            "sal"
+        ],
+        "comments": [
+            {
+                "comment_text": "¡Deliciosa receta!",
+                "posted_by": "Usuario1"
+            },
+            {
+                "comment_text": "Fácil de hacer",
+                "posted_by": "Usuario2"
+            }
+        ],
+        "steps": [
+            "Marinar el pollo en sal y pimienta",
+            "Asar el pollo a la parrilla"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Ensalada César",
+        "post_by": "Chef Ana",
+        "valoration": 4.2,
+        "image": "imagen_url_2",
+        "ingredients": [
+            "lechuga",
+            "pan tostado"
+        ],
+        "comments": [
+            {
+                "comment_text": "Me encanta esta ensalada",
+                "posted_by": "Usuario3"
+            },
+            {
+                "comment_text": "Muy refrescante",
+                "posted_by": "Usuario4"
+            }
+        ],
+        "steps": [
+            "Lavar y cortar la lechuga",
+            "Agregar crutones al gusto"
+        ]
+    }
+]

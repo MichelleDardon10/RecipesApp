@@ -1,0 +1,40 @@
+/* Estilos para la barra de búsqueda */
+.search-container {
+    text-align: center; /* Centra horizontalmente */
+    margin-top: 20px; /* Espacio en la parte superior */
+}
+
+#search-input {
+    border-radius: 25px; /* Bordes circulares */
+    margin: 0 auto; /* Centra horizontalmente */
+    display: block; /* Asegura que sea un bloque para centrarlo correctamente */
+    width: 40%; /* Hace la barra de búsqueda más grande */
+    padding: 10px; /* Aumenta el espacio interior para hacerlo más grande */
+}
+
+#search-input::placeholder {
+    color: #ccc; /* Color del texto de marcador de posición */
+}
+
+#search-button {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    border-radius: 50%; /* Hace el botón más circular */
+    cursor: pointer;
+    font-size: 20px; /* Aumenta el tamaño del ícono de lupa */
+    margin-left: -40px; /* Alinea el botón a la izquierda de la barra de búsqueda */
+}
+
+#search-button:hover {
+    background-color: transparent;
+    color: #0056b3; /* Cambia el color al pasar el mouse sobre él */
+}
+
+/* Estilo para las imágenes de las recetas */
+.card-img-top {
+    height: 200px; /* Ajusta la altura de las imágenes según tus preferencias */
+    width: 200px;
+    object-fit: cover; /* Escala la imagen para que encaje en el espacio designado */
+}

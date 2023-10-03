@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Pages from './pages/Pages';
 import backgroundImage from './fondo.jpg';
+import pollo from './pollo.jpg'; 
+
+
 
 function App() {
   const [data, setData] = useState({ recipes: [] });
@@ -37,49 +40,97 @@ function App() {
     fontFamily: 'Georgia, serif',
   };
 
-  return (
-    <div style={backgroundStyles}>
-      <div style={titleContainerStyles}>
-        <h1 style={titleStyles}>RecipesApp</h1>
-      </div>
-      <Pages />
-      {typeof data.recipes === 'undefined' ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          {data.recipes.map((recipe) => (
-            <div key={recipe.id}>
-              <h2>{recipe.name}</h2>
-              <p>Posted by: {recipe.post_by}</p>
-              <p>Valoration: {recipe.valoration}</p>
-              <img src={recipe.image} alt={recipe.name} />
-              <h3>Ingredients:</h3>
-              <ul>
-                {recipe.ingredients.map((ingredient, index) => (
-                  <li key={index}>{ingredient.ingredient_name}</li>
-                ))}
-              </ul>
-              <h3>Comments:</h3>
-              <ul>
-                {recipe.comments.map((comment, index) => (
-                  <li key={index}>
-                    <p>Comment: {comment.comment_text}</p>
-                    <p>Posted by: {comment.posted_by}</p>
-                  </li>
-                ))}
-              </ul>
-              <h3>Steps:</h3>
-              <ol>
-                {recipe.steps.map((step, index) => (
-                  <li key={index}>{step.step_text}</li>
-                ))}
-              </ol>
-            </div>
-          ))}
-        </div>
-      )}
+  const recipeTitle = {
+  fontSize: '22px',
+  color: '#007000',
+  marginTop: '10px',
+  fontFamily: 'Georgia, serif',
+  marginLeft: '10px',
+  marginBottom: '5px'
+};
+
+const recipeSubtitle = {
+  fontSize: '18px',
+  fontWeight: 'normal',
+  color: '#006800',
+  marginTop: '5px',
+  marginLeft: '25px',
+  fontFamily: 'Georgia, serif',
+};
+
+const recipeFont = {
+  fontSize: '15px',
+  fontWeight: 'normal',
+  color: '#000000',
+  marginTop: '5px',
+  marginLeft: '25px',
+  fontFamily: 'Georgia, serif',
+};
+
+const recipeContainerStyles = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'flex-start',
+  margin: '0 -10px', // Agregamos márgenes negativos para compensar el padding
+  marginLeft: '5px',
+  marginRight: '5px',
+};
+
+const recipeStyles = {
+  flex: '0 0 calc(33.33% - 20px)', // 33.33% con margen de 10px a la izquierda y derecha
+  padding: '10px',
+  border: '0.5px solid #ddd',
+  borderRadius: '1px',
+  boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+  margin: '20px',
+  maxWidth: '300px',
+  /* Otras propiedades de estilo específicas para las recetas */
+};
+
+
+return (
+  <div style={backgroundStyles}>
+    <div style={titleContainerStyles}>
+      <h1 style={titleStyles}>RecipesApp</h1>
     </div>
-  );
-}
+    <Pages />
+    {typeof data.recipes === 'undefined' ? (
+      <p>Loading...</p>
+    ) : (
+      <div style={recipeContainerStyles}>
+        {data.recipes.map((recipe) => (
+          <div key={recipe.id} style={recipeStyles}>
+            <h2 style={recipeTitle}>{recipe.name}</h2>
+            <p style={recipeFont}>Posted by: {recipe.post_by}</p>
+            <p style={recipeFont}>Valoration: {recipe.valoration}</p>
+            <img src={pollo} alt={recipe.name} style={{ maxWidth: '200px', height: 'auto', marginLeft: '30px' }} />
+            <h3 style={recipeSubtitle}>Ingredients:</h3>
+            <ul>
+              {recipe.ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient.ingredient_name}</li>
+              ))}
+            </ul>
+            <h3 style={recipeSubtitle}>Comments:</h3>
+            <ul>
+              {recipe.comments.map((comment, index) => (
+                <li key={index}>
+                  <p>Comment: {comment.comment_text}</p>
+                  <p>Posted by: {comment.posted_by}</p>
+                </li>
+              ))}
+            </ul>
+            <h3 style={recipeSubtitle}>Steps:</h3>
+            <ol>
+              {recipe.steps.map((step, index) => (
+                <li key={index}>{step.step_text}</li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+);
+              }
 
 export default App;

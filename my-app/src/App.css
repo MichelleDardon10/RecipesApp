@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+.menu-container {
+  display: flex;
+  overflow-x: auto; /* Habilitar el scrolling horizontal */
+  white-space: nowrap; /* Evitar el salto de línea de los elementos */
+  padding: 10px; /* Espaciado interior para los elementos del menú */
+  background-color: #FFA500; /* Color de fondo anaranjado oscuro */
+}
+
+.menu-item {
+  padding: 10px 20px; /* Espaciado interior para los elementos del menú */
+  font-size: 18px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre los elementos */
+  margin-right: 40px; /* Espacio entre elementos del menú */
+  margin-left: 40px;
+  color: white; /* Color de texto blanco */
+}
+
+.menu-item:last-child {
+  margin-right: 0; /* Elimina el espacio después del último elemento del menú */
+}
+
+.container-padre {
+  display: flex;
+  flex-wrap: wrap; /* Para que los contenedores se envuelvan si no caben en una fila */
+  justify-content: flex-start; /* Alinea los contenedores a la izquierda */
+}
+
+.contenedor-receta {
+  flex: 0 0 calc(33.33% - 60px); /* Esto hace que cada contenedor ocupe el 33.33% del ancho del contenedor padre, con margen izquierdo y derecho de 30px */
+  border: 0.5px solid #ddd;
+  padding: 10px;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 20px; /* Espacio entre contenedores */
+  max-width: 300px; /* Ancho máximo del contenedor */
+}

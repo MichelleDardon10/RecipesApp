@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'
 import Pages from './pages/Pages';
 import backgroundImage from './fondo.jpg';
+import SearchBar from './components/SearchBar.js';
 
 function App() {
-  const [data, setData] = useState({ recipes: [] });
+  const [allRecipes, setAllRecipes] = useState([]);
+  const handleSearchResults = (searchResults) => {
+    console.log("Datos de búsqueda recibidos:", searchResults);
+    setAllRecipes(searchResults);
+  };
 
   useEffect(() => {
     fetch("/recipes")
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        setAllRecipes(data.recipes);
         console.log(data);
       });
   }, []);
@@ -42,12 +48,17 @@ function App() {
       <div style={titleContainerStyles}>
         <h1 style={titleStyles}>RecipesApp</h1>
       </div>
+      <div className='App'>
+          {Array.isArray(allRecipes) && (
+            <SearchBar placeholder='Enter a recipe ...' data={allRecipes} onSearchResults={handleSearchResults}/>
+          )}
+        </div>
       <Pages />
-      {typeof data.recipes === 'undefined' ? (
+      {Array.isArray(allRecipes) && allRecipes.length === 0 ? (
         <p>Loading...</p>
       ) : (
         <div>
-          {data.recipes.map((recipe) => (
+          {allRecipes.map((recipe) => (
             <div key={recipe.id}>
               <h2>{recipe.name}</h2>
               <p>Posted by: {recipe.post_by}</p>

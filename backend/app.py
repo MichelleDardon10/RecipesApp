@@ -1,17 +1,23 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from models import db, Recipe, RecipeIngredient, RecipeComment, RecipeStep
+from flask_cors import CORS
+from sqlalchemy import or_
 import json
 
 app = Flask(__name__)
 
 
 # Configura la URL de la base de datos que se utilizará en SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:recipesapp@localhost/backend'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@localhost/backend'
 
 # Deshabilita el seguimiento de modificaciones de SQLAlchemy
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+SQLALCHEMY_ECHO = True
+
+CORS(app, supports_credentials=True)
 
 # Inicializa la extensión SQLAlchemy con tu aplicación Flask
+
 db.init_app(app)
 
 with app.app_context():
@@ -90,6 +96,32 @@ def get_recipes():
             }
             recipe_dict['steps'].append(step_dict)
 
+        recipe_data.append(recipe_dict)
+
+    return jsonify({'recipes': recipe_data})
+
+@app.route("/search", methods=['GET'])
+def search_recipes():
+    search_term = request.args.get('term')  # Obtiene el término de búsqueda desde la URL
+    recipes = Recipe.query.filter(
+        or_(
+            Recipe.name.ilike(f'%{search_term}%'),  # Búsqueda por nombre de receta
+            Recipe.ingredients.any(RecipeIngredient.ingredient_name.ilike(f'%{search_term}%'))  # Búsqueda por ingredientes
+        )
+    ).all()
+    
+    recipe_data = []
+    for recipe in recipes:
+        recipe_dict = {
+            'id': recipe.id,
+            'name': recipe.name,
+            'post_by': recipe.post_by,
+            'valoration': recipe.valoration,
+            'image': recipe.image,
+            'ingredients': [{"ingredient_name" : ingredient.ingredient_name} for ingredient in recipe.ingredients],
+            'comments': [{'comment_text': comment.comment_text, 'posted_by': comment.posted_by} for comment in recipe.comments],
+            'steps': [{'step_text': step.step_text} for step in recipe.steps]
+        }
         recipe_data.append(recipe_dict)
 
     return jsonify({'recipes': recipe_data})

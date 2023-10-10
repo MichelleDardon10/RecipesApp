@@ -17,6 +17,7 @@ SQLALCHEMY_ECHO = True
 CORS(app, supports_credentials=True)
 
 # Inicializa la extensión SQLAlchemy con tu aplicación Flask
+
 db.init_app(app)
 
 with app.app_context():

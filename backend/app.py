@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from models import db, Recipe, RecipeIngredient, RecipeComment, RecipeStep
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from sqlalchemy import or_
 import json
 

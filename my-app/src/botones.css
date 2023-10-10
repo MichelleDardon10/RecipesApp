@@ -1,0 +1,87 @@
+/*BOTON INICIO SESION*/
+.person-button {
+  display: inline-block;
+  padding: 10px 10px;
+  background-color: rgb(25, 137, 43); /* Cambia el color de fondo a naranja */
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px; /* Hacer el botón cuadrado */
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 0px;
+}
+
+.person-button:hover {
+  background-color: rgba(24, 145, 40, 0.858);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  
+}
+
+.button-container {
+  margin-right:10px; 
+  margin-left: 25px;
+  margin-bottom: 15px;
+  align-self: flex-end;
+}
+
+
+/*BOTON CALENDARIO*/
+.boton-calendario {
+  display: block;
+  position: fixed;
+  bottom: 20px; /* Distancia desde la parte inferior */
+  right: 20px; /* Distancia desde la derecha */
+  background-color: #18a846;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.boton-calendario:hover {
+  background-color: #e9df1d;
+}
+
+.boton-calendario img {
+  width: 42px;
+  height: 42px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+/*BOTON AGREGAR*/
+
+.boton-agregar-recetas {
+  position: fixed;
+  bottom: 100px; /* Ajusta la distancia desde la parte inferior */
+  right: 20px; /* Ajusta la distancia desde la derecha */
+  background-color: #18a846;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.boton-agregar-recetas:hover {
+  background-color: #e9df1d;
+}
+
+.boton-agregar-recetas img {
+  width: 42px;
+  height: 42px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}

@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fbe161;
 }
 
 @keyframes App-logo-spin {
@@ -42,10 +42,11 @@
   overflow-x: auto; /* Habilitar el scrolling horizontal */
   white-space: nowrap; /* Evitar el salto de línea de los elementos */
   padding: 10px; /* Espaciado interior para los elementos del menú */
-  background-color: #FFA500; /* Color de fondo anaranjado oscuro */
+  background-color: #FFA500;
+  width: 105%;
 }
 
-.menu-item {
+.menu-item { /*header*/
   padding: 10px 20px; /* Espaciado interior para los elementos del menú */
   font-size: 18px; /* Tamaño de fuente */
   cursor: pointer; /* Cambia el cursor al pasar sobre los elementos */
@@ -61,7 +62,7 @@
 .container-padre {
   display: flex;
   flex-wrap: wrap; /* Para que los contenedores se envuelvan si no caben en una fila */
-  justify-content: flex-start; /* Alinea los contenedores a la izquierda */
+  justify-content: center; 
 }
 
 .contenedor-receta {
@@ -100,10 +101,10 @@ body{
 
 }
 .left-pan{
-  padding-left: 7px;
+  padding-left: 0px;
 }
 .left-pan i{
- padding-left: 10px;
+ padding-left: 0px;
 }
 .form-input{
   height: 55px;

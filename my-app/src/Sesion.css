@@ -1,0 +1,61 @@
+  
+
+  .sesion-container {
+    background-image: url('fondito.jpg');
+    background-size: 800px 500px;
+    background-position: center 700px;
+    background-repeat: no-repeat;
+    background-position-y: 100px; /* Ajusta la posición vertical de la imagen de fondo */
+  }
+  
+  .banner {
+    background-color: #ffaa00; /* Color de fondo del banner */
+    padding: 0px; /* Espaciado interior del banner */
+    text-align: left; /* Centrar el texto en el banner */
+    color: whitesmoke; /* Color del texto en el banner */
+    width: 100%; /* Ancho del banner al 100% */
+    z-index: 2;
+  }
+  
+  .sesion-form-container {
+    max-width: 300px; /* Ancho máximo del contenedor */
+    width: 100%;
+    height: 250px; /* Ancho al 100% para que ocupe todo el ancho disponible */
+    padding: 20px; /* Espaciado interior del contenedor */
+    background-color: #f0f0f0; /* Color de fondo del contenedor */
+    border: 200px  #ccc; /* Borde del contenedor */
+    border-radius: 5px; /* Borde redondeado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+    margin: 0 auto; /* Centra horizontalmente */
+    margin-top: 100px;
+    display: flex; /* Utiliza flex para alinear verticalmente los elementos */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra horizontalmente los elementos */
+    z-index: 2;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Espacio entre las cajas de texto */
+  }
+  
+  label {
+    margin-bottom: 5px; /* Espacio entre los títulos y las cajas de texto */
+  }
+  
+  input {
+    width: 100%; /* Las cajas de texto ocuparán el 100% del ancho del contenedor */
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos verticalmente */
+  }
+  
+  .crear-cuenta {
+    text-align: center; /* Centra horizontalmente el texto */
+    color: white  /* Cambia el color del texto a rojo (puedes ajustarlo a tu preferencia) */
+  }
+  

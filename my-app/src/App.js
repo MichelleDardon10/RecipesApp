@@ -80,6 +80,16 @@ function App() {
     marginRight: '5px',
   };
 
+  const bannerStyles = {
+    backgroundColor: '#FFA500',
+    padding: '20px',
+    color: 'white',
+    textAlign: 'center',
+    fontSize: '24px',
+    marginBottom: '20px',
+    /* Otras propiedades de estilo para el banner */
+  };
+
   const recipeStyles = {
     flex: '0 0 calc(33.33% - 20px)', // 33.33% con margen de 10px a la izquierda y derecha
     padding: '10px',
